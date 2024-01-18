@@ -59,10 +59,9 @@ if st.button("**Generate blog posts for selected TypeFinder types**"):
             feedback = st.text_area(f"Feedback for {typefinder} blog:", key=f"feedback_{typefinder}", height=100)
 
             # Submit button for feedback
-            if st.button(f"Submit Feedback for {typefinder}", key=f"feedback_btn_{typefinder}"):
-                # Placeholder for LLM logic with feedback
-                # Implement logic to process the feedback and update the blog
-                updated_blog = "<LLM logic to process feedback and update blog>"
+            if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
+                chat_chain = LLMChain(prompt=PromptTemplate.from_template(feedback_system_message), llm=chat_model)
+                updated_blog = chat_chain.run(original=st.session_state[f"blog_{typefinder}"], feedback=feedback)
 
                 # Update the session state with the updated blog content
                 st.session_state[f"blog_{typefinder}"] = updated_blog
