@@ -16,6 +16,9 @@ for typefinder in ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP
     if f"blog_{typefinder}" not in st.session_state:
         st.session_state[f"blog_{typefinder}"] = ""
 
+if 'generated_headers' not in st.session_state:
+    st.session_state['generated_headers'] = ""
+
 # Streamlit UI setup
 st.title("MBTI Blog Post Generator")
 
@@ -31,11 +34,14 @@ title = st.text_input("Blog Title:")
 # Generate blog skeleton
 if st.button("Generate Skeleton for This Blog"):
     with st.spinner("Generating blog skeleton, please standby..."):
-        # Generate topics using GPT
         chat_chain = LLMChain(prompt=PromptTemplate.from_template(topic_system_message), llm=chat_model)
         topics = chat_chain.run(TITLE=title)
         st.session_state['generated_headers'] = topics
-        
+
+# Editable text area for headers
+st.write("Next, edit the generated skeleton as needed, or regenerate the skeleton entirely if you don't like this structure.")
+edited_headers = st.text_area("Generated skeleton:", value=st.session_state['generated_headers'], height=400)
+
 # Function to generate a single blog post
 def generate_blog_post(typefinder):
     chat_chain = LLMChain(prompt=PromptTemplate.from_template(system_message), llm=chat_model)
@@ -46,12 +52,10 @@ if typefinders:
     if st.button("**Generate blog posts for selected TypeFinder types**"):
         with st.spinner("Writing blog...this will take a minute or two"):
             for i, typefinder in enumerate(typefinders):
-                my_bar.progress(i / len(typefinders))
                 st.session_state[f"blog_{typefinder}"] = generate_blog_post(typefinder)
 
 # Display blogs and feedback mechanism
 for typefinder in typefinders:
-    # Only display the expander if the blog content is not empty
     if st.session_state[f"blog_{typefinder}"]:
         with st.expander(f"Blog for {typefinder}"):
             st.markdown(st.session_state[f"blog_{typefinder}"], unsafe_allow_html=True)
