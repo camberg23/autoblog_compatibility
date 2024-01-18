@@ -46,7 +46,7 @@ Here is an excellent example output (content AND formatting) for an input of 'Sh
   - Mention any relevant aptitude tests or career assessments that might help guide decision-making, including a call-to-action to take such assessments.
   - Encourage self-reflection and research as key components to making an informed career choice.
 
-#### Closing Remarks:
+#### Conclusion:
 - **Positive Reinforcement:**
   - Affirm that every personality has unique potential within the profession.  - Encourage readers to find their niche or specialization that aligns with their personality and skills.
   - Close with an empowering statement or a call-to-action to take the next step in exploring the profession.
@@ -87,4 +87,16 @@ YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE MBTI TYPE {TYPE}. ACCORDINGLY, PL
 - **THE ENTIRE BLOG MUST BE 1600 WORDS OR LONGER (ROUGHLY 200 WORDS/SECTION). THIS IS A CRITICAL REQUIREMENT THAT YOU MUST CONSCIOUSLY AND PAINSTAKINGLY ENSURE YOU MEET (BE VERBOSE). WRITE MORE THAN YOU THINK YOU SHOULD. DO NOT BE LAZY OR DISREGARD THIS ESSENTIAL REQUIREMENT!**
 
 **[END OF SYSTEM MESSAGE]**
+"""
+
+feedback_system_message = """
+Your job is to update a blog post given user feedback about the post. Be sure to perfectly replicate the original post as much as possible while ALSO robustly incorporating the feedback from the user.
+
+ORIGINAL POST:
+{original}
+
+FEEDBACK FROM USER:
+{feedback}
+
+Given this feedback and the instructions above, please modify the original post accordingly. Be sure to format the blog in HTML (not Markdown)!
 """
