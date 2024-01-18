@@ -70,7 +70,7 @@ YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE MBTI TYPE {TYPE}. ACCORDINGLY, PL
 ### CUSTOM USER-DEFINED STRUCTURE FOR THIS BLOG:
 {HEADERS}
 
--These will serve as the skeleton of this 1600-word piece. Be sure to fill in one or multiple paragraphs (as appropriate) for each header, intimately, intelligently, and creatively connecting the TypeFinder personality type with the topic of the blog.
+-These will serve as the skeleton of this 1600-word piece. Be sure to fill in one or multiple paragraphs (as appropriate) for each header, intimately, intelligently, and creatively connecting the MBTI personality type with the topic of the blog.
 -IT IS CRITICAL TO USE ALL OF THE HEADERS AND RESPECT THE USER'S DESIRED STRUCTURE AND CONTENT OF THE BLOG!
 
 ### Links That Should Be Included in the Piece:
