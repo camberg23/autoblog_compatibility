@@ -80,13 +80,19 @@ if st.button("**Generate blog posts for selected TypeFinder types**"):
     for i, typefinder in enumerate(typefinders):
         my_bar.progress(i / len(typefinders))
         if f"blog_{typefinder}" not in st.session_state:
-            st.session_state[f"blog_{typefinder}"] = generate_blog_post(typefinder)
+            st.session_state[f"blog_{typefinder"] = generate_blog_post(typefinder)
     my_bar.empty()
 
 # Display blogs and feedback mechanism
 for typefinder in typefinders:
     with st.expander(f"Blog for {typefinder}"):
         st.markdown(st.session_state.get(f"blog_{typefinder}", ""), unsafe_allow_html=True)
+        
+        # Individual blog download button
+        blog_html = st.session_state[f"blog_{typefinder}"].encode()
+        st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html")
+
+        # Feedback section
         feedback = st.text_area(f"Feedback for {typefinder} blog:", key=f"feedback_{typefinder}", height=100)
         if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
             with st.spinner("Processing feedback..."):
@@ -94,14 +100,7 @@ for typefinder in typefinders:
                 updated_blog = chat_chain.run(original=st.session_state[f"blog_{typefinder}"], feedback=feedback)
                 st.session_state[f"blog_{typefinder}"] = updated_blog
                 st.experimental_rerun()
+            st.success("Feedback processed and blog updated.")
 
-    # Compile all blogs in a single string for downloading
-    for typefinder in typefinders:
-        all_blogs_content += f"<h1>Blog for {typefinder}</h1>\n{st.session_state[f'blog_{typefinder}']}<hr>"
+# [Any additional code or functionality]
 
-    # Download button for the compiled blogs in HTML format
-    bytes_data = all_blogs_content.encode()
-    st.download_button(label="Download Blogs as HTML", data=bytes_data, file_name=f"{title}.html", mime="text/html")
-
-    # Reset progress bar
-    my_bar.empty()
