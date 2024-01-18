@@ -43,7 +43,6 @@ st.write("Next, edit the generated skeleton as needed, or regenerate the skeleto
 st.write("(Note: please don't replace or modify the markdown (###, **, etc) or '{TYPE}s' notation)")
 edited_headers = st.text_area("**Generated skeleton:**", value=st.session_state.get('generated_headers', ''), height=400)
 
-
 # When the user is ready to generate the blog post
 if st.button("**Generate blog posts for all TypeFinder types with the skeleton as it appears above**"):
     blogs = {}
@@ -72,26 +71,3 @@ if st.button("**Generate blog posts for all TypeFinder types with the skeleton a
 
     # Reset progress bar
     my_bar.empty()
-    
-# # When the user is ready to generate the blog post
-# if st.button("**Generate blog posts for all TypeFinder types with the skeleton as it appears above**"):
-#     blogs = {}
-#     my_bar = st.progress(0)
-#     for i, typefinder in enumerate(typefinders):
-#         # Update progress bar
-#         my_bar.progress(i / len(typefinders))
-        
-#         # Generate the blog post
-#         chat_chain = LLMChain(prompt=PromptTemplate.from_template(system_message), llm=chat_model)
-#         blog = chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE=typefinder, LOWER_TYPE=typefinder.lower())
-        
-#         # Store the blog post
-#         blogs[typefinder] = blog
-
-#     # Display the generated blog posts in expanders
-#     for typefinder, blog in blogs.items():
-#         with st.expander(typefinder):
-#             st.markdown(blog, unsafe_allow_html=True)
-
-#     # Reset progress bar
-#     my_bar.empty()
