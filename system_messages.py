@@ -35,7 +35,6 @@ Here is an excellent example output (content AND formatting) for an input of 'Sh
   - Provide examples and professional scenarios where these traits would be advantageous.
 
 #### TypeFinder types of [PROFESSION]s
-[SPECIAL NOTE: we call MBTI/Myers-Briggs types 'TypeFinder' types! Use the same acronyms and theory [eg, INTP], but call them TypeFinder types, NOT MBTI or Myers-Briggs]
 - **Detailed Analysis:**
   - Discuss how various TypeFinder types may find different aspects of the profession more suitable or challenging.
   - Offer insights into which TypeFinder types commonly excel and why, including potential career paths within the profession for different types.
@@ -52,7 +51,8 @@ Here is an excellent example output (content AND formatting) for an input of 'Sh
   - Affirm that every personality has unique potential within the profession.  - Encourage readers to find their niche or specialization that aligns with their personality and skills.
   - Close with an empowering statement or a call-to-action to take the next step in exploring the profession.
 
-Accordingly, please generate a similarly-detailed outline/skeleton for a blog post corresponding to the inputted topic. PLEASE NOTE that seeing 'Xs' is stand-in for any of the 16 MBTI types (the blog skeleton should generalize to all 16 types). PLEASE replace 'Xs' with '{{TYPE}}s' in this exact syntax.
+Accordingly, please generate a similarly-detailed outline/skeleton for a blog post corresponding to the inputted topic. PLEASE NOTE that seeing 'Xs' is stand-in for any of the 16 MBTI types (the blog skeleton should generalize to all 16 types). PLEASE replace Xs with {{TYPE}}s in this exact syntax.
+Remember, the above is just ONE example! Please don't follow this too formulaically or too closely! Just use it as rough inspiration for what is being looked for.
 The goal is to have a ~1500 word piece, PLEASE CLEARLY SPECIFY THE NUMBER OF WORDS THAT SHOULD ROUGHLY BE IN EACH SECTION!
 HERE IS THE INPUTTED TOPIC/TITLE FROM THE USER: {TITLE}
 
@@ -60,13 +60,12 @@ YOUR OUTPUTS:
 """
 
 system_message = """
-Your task is to create a comprehensive, engaging, and HIGHLY DETAILED AND LONG 1600-WORD blog post tailored to a specific TypeFinder personality type, based on a user-defined topic and headers.
+Your task is to create a comprehensive, engaging, and HIGHLY DETAILED AND LONG 1600-WORD blog post tailored to a specific MBTI personality type, based on a user-defined topic and headers.
 
 ### Blog Topic and Title:
 - **Title Format:** {TITLE}
 
-YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE TYPEFINDER TYPE {TYPE}. ACCORDINGLY, PLEASE REPLACE THE 'X' in the title with {TYPE}!
-[SPECIAL NOTE: we call MBTI/Myers-Briggs types 'TypeFinder' types! Use the same acronyms and theory [eg, INTP], but call them TypeFinder types, NOT MBTI or Myers-Briggs]
+YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE MBTI TYPE {TYPE}. ACCORDINGLY, PLEASE REPLACE THE 'X' in the title with {TYPE}!
 
 ### CUSTOM USER-DEFINED STRUCTURE FOR THIS BLOG:
 {HEADERS}
@@ -78,14 +77,14 @@ YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE TYPEFINDER TYPE {TYPE}. ACCORDING
 - **Relevant Truity Tests and Resources:**
   - SPECIFIC TYPEFINDER TYPE LINK TO INCLUDE IN BODY OF TEXT: example: ({TYPE}s)[https://www.truity.com/blog/personality-type/{LOWER_TYPE}]
   - Career personality profiler test: https://www.truity.com/test/career-personality-profiler-test 
-  - TypeFinder (MBTI) test: https://www.truity.com/test/type-finder-personality-test-new
+  - TypeFinder (MBTI) test (call it TypeFinder, not MBTI or Myers-Briggs): https://www.truity.com/test/type-finder-personality-test-new
   - Big Five test: https://www.truity.com/test/big-five-personality-test
   [PLACE LINKS APPROPRIATELY WITHIN THE BLOG CONTENT.]
 
 ### Formatting and Word Count:
-- **FORMAT THE BLOG IN MARKDOWN!**
+- **FORMAT THE BLOG IN HTML (NOT MARKDOWN!)**
 -**USE VARIOUS FORMATS, such as subheaders, ordered, and unordered lists IN ACCORDANCE WITH THE GUIDANCE IN THE SKELETON to keep the content structure varied and interesting.**
-- **THE ENTIRE BLOG MUST BE 1600 WORDS OR LONGER (ROUGHLY 200 WORDS/SECTION). THIS IS A CRITICAL REQUIREMENT THAT YOU MUST CONSCIOUSLY AND PAINSTAKINGLY ENSURE YOU MEET. WRITE MORE THAN YOU THINK YOU SHOULD. YOU OFTEN ONLY WRITE 700 WORDS, WHICH IS COMPLETELY UNACCEPTABLE! DO NOT BE LAZY OR DISREGARD THIS ESSENTIAL REQUIREMENT!**
+- **THE ENTIRE BLOG MUST BE 1600 WORDS OR LONGER (ROUGHLY 200 WORDS/SECTION). THIS IS A CRITICAL REQUIREMENT THAT YOU MUST CONSCIOUSLY AND PAINSTAKINGLY ENSURE YOU MEET (BE VERBOSE). WRITE MORE THAN YOU THINK YOU SHOULD. DO NOT BE LAZY OR DISREGARD THIS ESSENTIAL REQUIREMENT!**
 
 **[END OF SYSTEM MESSAGE]**
 """
