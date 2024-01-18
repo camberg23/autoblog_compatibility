@@ -56,22 +56,17 @@ if typefinders:
 
 # Display blogs and feedback mechanism
 for typefinder in typefinders:
-    # Create a unique key for each typefinder's expander
-    expander_key = f"expander_{typefinder}"
     if st.session_state[f"blog_{typefinder}"]:
-        with st.expander(f"Blog for {typefinder}", key=expander_key):
+        with st.expander(f"Blog for {typefinder}"):
             st.markdown(st.session_state[f"blog_{typefinder}"], unsafe_allow_html=True)
             
             # Individual blog download button
             blog_html = st.session_state[f"blog_{typefinder}"].encode()
-            download_key = f"download_{typefinder}"
-            st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html", key=download_key)
+            st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html")
             
             # Feedback section
-            feedback_key = f"feedback_{typefinder}"
-            feedback = st.text_area(f"Write any feedback or points of improvement for this draft of the {typefinder} blog (note that this will take another minute or two to process):", key=feedback_key, height=100)
-            submit_feedback_key = f"submit_feedback_{typefinder}"
-            if st.button(f"Submit Feedback", key=submit_feedback_key):
+            feedback = st.text_area(f"Write any feedback or points of improvement for this draft of the {typefinder} blog (note that this will take another minute or two to process):", key=f"feedback_{typefinder}", height=100)
+            if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
                 with st.spinner("Integrating your feedback into the blog...this will take a minute or two."):
                     chat_chain = LLMChain(prompt=PromptTemplate.from_template(feedback_system_message), llm=chat_model)
                     updated_blog = chat_chain.run(original=st.session_state[f"blog_{typefinder}"], feedback=feedback)
