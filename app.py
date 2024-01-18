@@ -11,6 +11,11 @@ from system_messages import *
 # Initialize the chat model
 chat_model = ChatOpenAI(openai_api_key=st.secrets['API_KEY'], model_name='gpt-4-1106-preview', temperature=0.2, max_tokens=4096)
 
+# Initialize session state for blogs
+for typefinder in ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"]:
+    if f"blog_{typefinder}" not in st.session_state:
+        st.session_state[f"blog_{typefinder}"] = ""
+
 # Streamlit UI setup
 st.title("MBTI Blog Post Generator")
 
@@ -86,12 +91,12 @@ if st.button("**Generate blog posts for selected TypeFinder types**"):
 # Display blogs and feedback mechanism
 for typefinder in typefinders:
     with st.expander(f"Blog for {typefinder}"):
-        st.markdown(st.session_state.get(f"blog_{typefinder}", ""), unsafe_allow_html=True)
+        if st.session_state[f"blog_{typefinder}"]:
+            st.markdown(st.session_state[f"blog_{typefinder}"], unsafe_allow_html=True)
+            # Individual blog download button
+            blog_html = st.session_state[f"blog_{typefinder}"].encode()
+            st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html")
         
-        # Individual blog download button
-        blog_html = st.session_state[f"blog_{typefinder}"].encode()
-        st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html")
-
         # Feedback section
         feedback = st.text_area(f"Feedback for {typefinder} blog:", key=f"feedback_{typefinder}", height=100)
         if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
