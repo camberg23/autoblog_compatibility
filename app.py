@@ -42,11 +42,12 @@ def generate_blog_post(typefinder):
     return chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE=typefinder, LOWER_TYPE=typefinder.lower())
 
 # Generate blog posts for selected TypeFinder types
-if st.button("**Generate blog posts for selected TypeFinder types**"):
-    with st.spinner("Writing blog...this will take a minute or two"):
-        for i, typefinder in enumerate(typefinders):
-            my_bar.progress(i / len(typefinders))
-            st.session_state[f"blog_{typefinder}"] = generate_blog_post(typefinder)
+if typefinders:
+    if st.button("**Generate blog posts for selected TypeFinder types**"):
+        with st.spinner("Writing blog...this will take a minute or two"):
+            for i, typefinder in enumerate(typefinders):
+                my_bar.progress(i / len(typefinders))
+                st.session_state[f"blog_{typefinder}"] = generate_blog_post(typefinder)
 
 # Display blogs and feedback mechanism
 for typefinder in typefinders:
