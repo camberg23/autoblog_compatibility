@@ -80,7 +80,7 @@ if st.button("**Generate blog posts for selected TypeFinder types**"):
     for i, typefinder in enumerate(typefinders):
         my_bar.progress(i / len(typefinders))
         if f"blog_{typefinder}" not in st.session_state:
-            st.session_state[f"blog_{typefinder"] = generate_blog_post(typefinder)
+            st.session_state[f"blog_{typefinder}"] = generate_blog_post(typefinder)
     my_bar.empty()
 
 # Display blogs and feedback mechanism
