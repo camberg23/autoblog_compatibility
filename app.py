@@ -36,38 +36,64 @@ st.write("Next, edit the generated skeleton as needed, or regenerate the skeleto
 st.write("(Note: please don't replace or modify the markdown (###, **, etc) or '{TYPE}s' notation)")
 edited_headers = st.text_area("**Generated skeleton:**", value=st.session_state.get('generated_headers', ''), height=400)
 
+# # Generate blog posts for selected TypeFinder types
+# if st.button("**Generate blog posts for selected TypeFinder types**"):
+#     my_bar = st.progress(0)
+#     all_blogs_content = ""
+#     for i, typefinder in enumerate(typefinders):
+#         # Update progress bar
+#         my_bar.progress(i / len(typefinders))
+        
+#         # Generate the blog post
+#         chat_chain = LLMChain(prompt=PromptTemplate.from_template(system_message), llm=chat_model)
+#         blog = chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE=typefinder, LOWER_TYPE=typefinder.lower())
+        
+#         # Save the initial blog post in the session state
+#         st.session_state[f"blog_{typefinder}"] = blog
+
+#         # Create an expander for each blog with a feedback mechanism
+#         with st.expander(f"Blog for {typefinder}"):
+#             st.markdown(st.session_state[f"blog_{typefinder}"], unsafe_allow_html=True)
+
+#             # Feedback text area
+#             feedback = st.text_area(f"Feedback for {typefinder} blog:", key=f"feedback_{typefinder}", height=100)
+
+#             # Submit button for feedback
+#             if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
+#                 chat_chain = LLMChain(prompt=PromptTemplate.from_template(feedback_system_message), llm=chat_model)
+#                 updated_blog = chat_chain.run(original=st.session_state[f"blog_{typefinder}"], feedback=feedback)
+
+#                 # Update the session state with the updated blog content
+#                 st.session_state[f"blog_{typefinder}"] = updated_blog
+
+#                 # Display the updated blog
+#                 st.markdown(updated_blog, unsafe_allow_html=True)
+
+# Function to generate a single blog post
+def generate_blog_post(typefinder):
+    chat_chain = LLMChain(prompt=PromptTemplate.from_template(system_message), llm=chat_model)
+    return chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE=typefinder, LOWER_TYPE=typefinder.lower())
+
 # Generate blog posts for selected TypeFinder types
 if st.button("**Generate blog posts for selected TypeFinder types**"):
     my_bar = st.progress(0)
-    all_blogs_content = ""
     for i, typefinder in enumerate(typefinders):
-        # Update progress bar
         my_bar.progress(i / len(typefinders))
-        
-        # Generate the blog post
-        chat_chain = LLMChain(prompt=PromptTemplate.from_template(system_message), llm=chat_model)
-        blog = chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE=typefinder, LOWER_TYPE=typefinder.lower())
-        
-        # Save the initial blog post in the session state
-        st.session_state[f"blog_{typefinder}"] = blog
+        if f"blog_{typefinder}" not in st.session_state:
+            st.session_state[f"blog_{typefinder}"] = generate_blog_post(typefinder)
+    my_bar.empty()
 
-        # Create an expander for each blog with a feedback mechanism
-        with st.expander(f"Blog for {typefinder}"):
-            st.markdown(st.session_state[f"blog_{typefinder}"], unsafe_allow_html=True)
-
-            # Feedback text area
-            feedback = st.text_area(f"Feedback for {typefinder} blog:", key=f"feedback_{typefinder}", height=100)
-
-            # Submit button for feedback
-            if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
+# Display blogs and feedback mechanism
+for typefinder in typefinders:
+    with st.expander(f"Blog for {typefinder}"):
+        st.markdown(st.session_state.get(f"blog_{typefinder}", ""), unsafe_allow_html=True)
+        feedback = st.text_area(f"Feedback for {typefinder} blog:", key=f"feedback_{typefinder}", height=100)
+        if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder}"):
+            with st.spinner("Processing feedback..."):
                 chat_chain = LLMChain(prompt=PromptTemplate.from_template(feedback_system_message), llm=chat_model)
                 updated_blog = chat_chain.run(original=st.session_state[f"blog_{typefinder}"], feedback=feedback)
-
-                # Update the session state with the updated blog content
                 st.session_state[f"blog_{typefinder}"] = updated_blog
-
-                # Display the updated blog
-                st.markdown(updated_blog, unsafe_allow_html=True)
+                st.experimental_rerun()
 
     # Compile all blogs in a single string for downloading
     for typefinder in typefinders:
