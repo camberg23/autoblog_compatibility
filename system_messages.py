@@ -1,7 +1,7 @@
 topic_system_message = """
 Your task is to take a given blog topic/title as input and generate a skeleton/outline of the blog content that will be used by another person to actually write the blog.
 
-The blog will always focus on giving comprehensive life or career insights to people based on Myers-Briggs/TypeFinder types.  
+The blog will focus on the compatability of two MBTI personality types: {TYPE1} and {TYPE2} and should relate to the following designated title/key idea: {TITLE}
 
 Here is an excellent example output (content AND formatting) for an input of 'Should I become a [PROFESSION]?':
 
@@ -51,10 +51,12 @@ Here is an excellent example output (content AND formatting) for an input of 'Sh
   - Affirm that every personality has unique potential within the profession.  - Encourage readers to find their niche or specialization that aligns with their personality and skills.
   - Close with an empowering statement or a call-to-action to take the next step in exploring the profession.
 
-Accordingly, please generate a similarly-detailed outline/skeleton for a blog post corresponding to the inputted topic. PLEASE NOTE that seeing 'Xs' is stand-in for any of the 16 MBTI types (the blog skeleton should generalize to all 16 types). PLEASE replace Xs with {{TYPE}}s in this exact syntax.
-Remember, the above is just ONE example! Please don't follow this too formulaically or too closely! Just use it as rough inspiration for what is being looked for.
+Accordingly, please generate a similarly-detailed outline/skeleton for a blog post corresponding to the inputted compatibility post, being sure to focus on both types individually and collectively in the relevant way.
+Remember, the above is just ONE example! Please don't follow this too formulaically or too closely! Just use it as rough inspiration for the level of detail that is being looked for.
 The goal is to have a ~1500 word piece, PLEASE CLEARLY SPECIFY THE NUMBER OF WORDS THAT SHOULD ROUGHLY BE IN EACH SECTION!
-HERE IS THE INPUTTED TOPIC/TITLE FROM THE USER: {TITLE}
+
+HERE AGAIN IS THE INPUTTED TOPIC/TITLE FROM THE USER: {TITLE}
+AND HERE AGAIN ARE THE TWO RELEVANT TYPES: {TYPE1} and {TYPE2}
 
 YOUR OUTPUTS:
 """
@@ -65,7 +67,7 @@ Your task is to create a comprehensive, engaging, and HIGHLY DETAILED AND LONG 1
 ### Blog Topic and Title:
 - **Title Format:** {TITLE}
 
-YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE MBTI TYPE {TYPE}. ACCORDINGLY, PLEASE REPLACE THE 'X' in the title with {TYPE}!
+YOU ARE WRITING THIS BLOG SPECIFICALLY FOR ASSESSING THE COMPATABILITY OF MBTI TYPES {TYPE1} AND {TYPE2}.
 
 If you plan to label or name any of the types, please use the following names only: INFP: The Healer, INTJ: The Mastermind, INFJ: The Counselor, INTP: The Architect, ENFP: The Champion, ENTJ: The Commander, ENTP: The Visionary, ENFJ: The Teacher, ISFJ: The Protector, ISFP: The Composer, ISTJ: The Inspector, ISTP: The Craftsperson, ESFJ: The Provider, ESFP: The Performer, ESTJ: The Supervisor, ESTP: The Dynamo
 
@@ -77,7 +79,7 @@ If you plan to label or name any of the types, please use the following names on
 
 ### Links That Should Be Included in the Piece:
 - **Relevant Truity Tests and Resources:**
-  - SPECIFIC TYPEFINDER TYPE LINK TO INCLUDE IN BODY OF TEXT: example: ({TYPE}s)[https://www.truity.com/blog/personality-type/{LOWER_TYPE}]
+  - SPECIFIC TYPEFINDER TYPE LINK TO INCLUDE IN BODY OF TEXT: example: ({TYPE1}s)[https://www.truity.com/blog/personality-type/{LOWER_TYPE1}]
   - Career personality profiler test: https://www.truity.com/test/career-personality-profiler-test 
   - TypeFinder (MBTI) test (call it TypeFinder, not MBTI or Myers-Briggs): https://www.truity.com/test/type-finder-personality-test-new
   - Big Five test: https://www.truity.com/test/big-five-personality-test
