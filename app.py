@@ -25,8 +25,8 @@ if 'blog' not in st.session_state:
 # Streamlit UI setup
 st.title("MBTI Compatibiity Blog Post Generator")
 
-st.write("**This tool will generate blogs for selected MBTI types given a fixed topic.** When you write your title, **use the placeholder 'Xs'** for where the types (eg, INTPs, ENFJs) will go.")
-st.write("*Examples: The Best Paying Careers for Xs, Best Jobs for Xs That Don't Require a College Degree, etc.*")
+st.write("**This tool will generate compatibility-themed blogs for selected MBTI types given a fixed topic.**")
+st.write("*Examples: How ISTJs and INFPs Collaborate in the Workplace, Romantic Prospects of ESTJS and INTPS, How ENFJs Can Get Along with INTPs, etc.*")
 
 # Multiselect widget for MBTI type selection
 typefinder1 = st.selectbox("Choose the first MBTI Type:", ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"])
@@ -50,7 +50,7 @@ if st.session_state['generated_headers']:
     # Function to generate a single blog post
     def generate_blog_post(typefinder1, typefinder2):
         chat_chain = LLMChain(prompt=PromptTemplate.from_template(system_message), llm=chat_model)
-        return chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE1=typefinder1, TYPE2=typefinder2, LOWER_TYPE=typefinder.lower())
+        return chat_chain.run(TITLE=title, HEADERS=edited_headers, TYPE1=typefinder1, TYPE2=typefinder2, LOWER_TYPE1=typefinder1.lower())
     
     # Generate blog posts for selected TypeFinder types
     if typefinder1 and typefinder2:
