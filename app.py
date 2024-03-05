@@ -23,7 +23,7 @@ if 'blog' not in st.session_state:
     st.session_state['blog'] = ""
 
 # Streamlit UI setup
-st.title("MBTI Compatibiity Blog Post Generator")
+st.title("MBTI Compatibility Blog Post Generator")
 
 st.write("**This tool will generate compatibility-themed blogs for selected MBTI types given a fixed topic.**")
 st.write("*Examples: How ISTJs and INFPs Collaborate in the Workplace, Romantic Prospects of ESTJS and INTPS, How ENFJs Can Get Along with INTPs, etc.*")
