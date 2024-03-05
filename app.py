@@ -56,8 +56,7 @@ if st.session_state['generated_headers']:
     if typefinder1 and typefinder2:
         if st.button("**Generate a compatability blog post for selected TypeFinder types**"):
             with st.spinner("Writing blog...this will take a minute or two."):
-                for i, typefinder in enumerate(typefinders):
-                    st.session_state["blog"] = generate_blog_post(typefinder1, typefinder2)
+                st.session_state["blog"] = generate_blog_post(typefinder1, typefinder2)
 
     if st.session_state["blog"]:
         with st.expander(f"Blog for {typefinder1} and {typefinder2}"):
