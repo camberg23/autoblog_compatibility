@@ -67,6 +67,8 @@ Your task is to create a comprehensive, engaging, and HIGHLY DETAILED AND LONG 1
 
 YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE MBTI TYPE {TYPE}. ACCORDINGLY, PLEASE REPLACE THE 'X' in the title with {TYPE}!
 
+If you plan to label or name any of the types, please use the following names only: INFP: The Healer, INTJ: The Mastermind, INFJ: The Counselor, INTP: The Architect, ENFP: The Champion, ENTJ: The Commander, ENTP: The Visionary, ENFJ: The Teacher, ISFJ: The Protector, ISFP: The Composer, ISTJ: The Inspector, ISTP: The Craftsperson, ESFJ: The Provider, ESFP: The Performer, ESTJ: The Supervisor, ESTP: The Dynamo
+
 ### CUSTOM USER-DEFINED STRUCTURE FOR THIS BLOG:
 {HEADERS}
 
@@ -83,6 +85,7 @@ YOU ARE WRITING THIS BLOG SPECIFICALLY FOR THE MBTI TYPE {TYPE}. ACCORDINGLY, PL
 
 ### Formatting and Word Count:
 - **FORMAT THE BLOG IN HTML (NOT MARKDOWN!)**
+- NEVER use Oxford commas!
 -**USE VARIOUS FORMATS, such as subheaders, ordered, and unordered lists IN ACCORDANCE WITH THE GUIDANCE IN THE SKELETON to keep the content structure varied and interesting.**
 - **THE ENTIRE BLOG MUST BE 1600 WORDS OR LONGER (ROUGHLY 200 WORDS/SECTION). THIS IS A CRITICAL REQUIREMENT THAT YOU MUST CONSCIOUSLY AND PAINSTAKINGLY ENSURE YOU MEET (BE VERBOSE). WRITE MORE THAN YOU THINK YOU SHOULD. DO NOT BE LAZY OR DISREGARD THIS ESSENTIAL REQUIREMENT!**
 
@@ -98,5 +101,5 @@ ORIGINAL POST:
 FEEDBACK FROM USER:
 {feedback}
 
-Given this feedback and the instructions above, please modify the original post accordingly. Be sure to format the blog in HTML (not Markdown)!
+Given this feedback and the instructions above, please modify the original post accordingly, keeping EVERYTHING the same unless the user specified a change. Be sure to format the blog in HTML (not Markdown)!
 """
