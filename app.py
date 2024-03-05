@@ -58,23 +58,21 @@ if st.session_state['generated_headers']:
             with st.spinner("Writing blog...this will take a minute or two."):
                 for i, typefinder in enumerate(typefinders):
                     st.session_state["blog"] = generate_blog_post(typefinder1, typefinder2)
-    
-    # Display blogs and feedback mechanism
-    for typefinder in typefinders:
-        if st.session_state["blog"]:
-            with st.expander(f"Blog for {typefinder1} and {typefinder2}"):
-                st.markdown(st.session_state["blog"], unsafe_allow_html=True)
-                
-                # Individual blog download button
-                blog_html = st.session_state["blog"].encode()
-                st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html")
-                
-                # Feedback section
-                feedback = st.text_area(f"Write any feedback or points of improvement for this draft of the blog (note that this will take another minute or two to process):", key=f"feedback_{typefinder1}_{typefinder2}", height=100)
-                if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder1}_{typefinder2}"):
-                    with st.spinner("Integrating your feedback into the blog...this will take a minute or two."):
-                        chat_chain = LLMChain(prompt=PromptTemplate.from_template(feedback_system_message), llm=chat_model)
-                        updated_blog = chat_chain.run(original=st.session_state["blog"], feedback=feedback)
-                        st.session_state["blog"] = updated_blog
-                        st.experimental_rerun()
-                    st.success("Feedback processed and blog updated.")
+
+    if st.session_state["blog"]:
+        with st.expander(f"Blog for {typefinder1} and {typefinder2}"):
+            st.markdown(st.session_state["blog"], unsafe_allow_html=True)
+            
+            # Individual blog download button
+            blog_html = st.session_state["blog"].encode()
+            st.download_button(label="Download this Blog as HTML", data=blog_html, file_name=f"{typefinder}_blog.html", mime="text/html")
+            
+            # Feedback section
+            feedback = st.text_area(f"Write any feedback or points of improvement for this draft of the blog (note that this will take another minute or two to process):", key=f"feedback_{typefinder1}_{typefinder2}", height=100)
+            if st.button(f"Submit Feedback", key=f"feedback_btn_{typefinder1}_{typefinder2}"):
+                with st.spinner("Integrating your feedback into the blog...this will take a minute or two."):
+                    chat_chain = LLMChain(prompt=PromptTemplate.from_template(feedback_system_message), llm=chat_model)
+                    updated_blog = chat_chain.run(original=st.session_state["blog"], feedback=feedback)
+                    st.session_state["blog"] = updated_blog
+                    st.experimental_rerun()
+                st.success("Feedback processed and blog updated.")
