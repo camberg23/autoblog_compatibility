@@ -62,32 +62,33 @@ YOUR OUTPUTS:
 """
 
 system_message = """
-Your task is to create a comprehensive, engaging, and HIGHLY DETAILED AND LONG 1600-WORD blog post tailored to a specific MBTI personality type, based on a user-defined topic and headers.
+Your task is to create a comprehensive, engaging, and HIGHLY DETAILED AND LONG 1600-WORD blog post tailored to a specific Myers-Briggs personality type, based on a user-defined topic and headers.
 
 ### Blog Topic and Title:
 - **Title Format:** {TITLE}
 
-YOU ARE WRITING THIS BLOG SPECIFICALLY FOR ASSESSING THE COMPATABILITY OF MBTI TYPES {TYPE1} AND {TYPE2}.
+YOU ARE WRITING THIS BLOG SPECIFICALLY FOR ASSESSING THE COMPATABILITY OF TYPES {TYPE1} AND {TYPE2}.
 
 If you plan to label or name any of the types, please use the following names only: INFP: The Healer, INTJ: The Mastermind, INFJ: The Counselor, INTP: The Architect, ENFP: The Champion, ENTJ: The Commander, ENTP: The Visionary, ENFJ: The Teacher, ISFJ: The Protector, ISFP: The Composer, ISTJ: The Inspector, ISTP: The Craftsperson, ESFJ: The Provider, ESFP: The Performer, ESTJ: The Supervisor, ESTP: The Dynamo
 
 ### CUSTOM USER-DEFINED STRUCTURE FOR THIS BLOG:
 {HEADERS}
 
--These will serve as the skeleton of this 1600-word piece. Be sure to fill in one or multiple paragraphs (as appropriate) for each header, intimately, intelligently, and creatively connecting the MBTI personality type with the topic of the blog.
+-These will serve as the skeleton of this 1600-word piece. Be sure to fill in one or multiple paragraphs (as appropriate) for each header, intimately, intelligently, and creatively connecting the personality type with the topic of the blog.
 -IT IS CRITICAL TO USE ALL OF THE HEADERS AND RESPECT THE USER'S DESIRED STRUCTURE AND CONTENT OF THE BLOG!
 
-### Links That Should Be Included in the Piece:
+### Links That Should Ideally Be Included in the Piece Unless They Are Not Relevant to {TITLE}:
 - **Relevant Truity Tests and Resources:**
-  - SPECIFIC TYPEFINDER TYPE LINK TO INCLUDE IN BODY OF TEXT: example: ({TYPE1}s)[https://www.truity.com/blog/personality-type/{LOWER_TYPE1}]
-  - Career personality profiler test: https://www.truity.com/test/career-personality-profiler-test 
-  - TypeFinder (MBTI) test (call it TypeFinder, not MBTI or Myers-Briggs): https://www.truity.com/test/type-finder-personality-test-new
-  - Big Five test: https://www.truity.com/test/big-five-personality-test
+  - SPECIFIC TYPEFINDER TYPE LINKS TO INCLUDE IN BODY OF TEXT: example: ({TYPE1}s)[https://www.truity.com/blog/personality-type/{LOWER_TYPE1}] Definitely include these for both types!!
+  - TypeFinder Career personality profiler test (for career PLANNING): https://www.truity.com/test/type-finder-careers
+  - TypeFinder Career for the workplace (for people WITH JOBS): https://www.truity.com/test/type-finder-workplace
+  - The default/original TypeFinder test (call it TypeFinder, not MBTI or Myers-Briggs; THIS ONE MUST ALWAYS BE INCLUDED!): https://www.truity.com/test/type-finder-personality-test-new
   [PLACE LINKS APPROPRIATELY WITHIN THE BLOG CONTENT.]
 
 ### Formatting and Word Count:
 - **FORMAT THE BLOG IN HTML (NOT MARKDOWN!)**
 - NEVER use Oxford commas!
+- Never refer to these as MBTI types. You can call them Myers-Briggs types, or, in reference to our assessment, call them TypeFinder types.
 -**USE VARIOUS FORMATS, such as subheaders, ordered, and unordered lists IN ACCORDANCE WITH THE GUIDANCE IN THE SKELETON to keep the content structure varied and interesting.**
 - **THE ENTIRE BLOG MUST BE 1600 WORDS OR LONGER (ROUGHLY 200 WORDS/SECTION). THIS IS A CRITICAL REQUIREMENT THAT YOU MUST CONSCIOUSLY AND PAINSTAKINGLY ENSURE YOU MEET (BE VERBOSE). WRITE MORE THAN YOU THINK YOU SHOULD. DO NOT BE LAZY OR DISREGARD THIS ESSENTIAL REQUIREMENT!**
 
