@@ -29,8 +29,8 @@ st.write("**This tool will generate compatibility-themed blogs for selected MBTI
 st.write("*Examples: How ISTJs and INFPs Collaborate in the Workplace, Romantic Prospects of ESTJS and INTPS, How ENFJs Can Get Along with INTPs, etc.*")
 
 # Multiselect widget for MBTI type selection
-typefinder1 = st.selectbox("Choose the first MBTI Type:", ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"])
-typefinder2 = st.selectbox("Choose the second MBTI Type:", ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"])
+typefinder1 = st.selectbox("Choose the first MBTI Type:", ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"], index=None)
+typefinder2 = st.selectbox("Choose the second MBTI Type:", ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"], index=None)
 
 # Input for blog title
 title = st.text_input("Blog Title:")
