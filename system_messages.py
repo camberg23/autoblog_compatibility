@@ -92,7 +92,13 @@ If you plan to label or name any of the types, please use the following names on
 -**USE VARIOUS FORMATS, such as subheaders, ordered, and unordered lists IN ACCORDANCE WITH THE GUIDANCE IN THE SKELETON to keep the content structure varied and interesting.**
 - **THE ENTIRE BLOG MUST BE 1600 WORDS OR LONGER (ROUGHLY 200 WORDS/SECTION). THIS IS A CRITICAL REQUIREMENT THAT YOU MUST CONSCIOUSLY AND PAINSTAKINGLY ENSURE YOU MEET (BE VERBOSE). WRITE MORE THAN YOU THINK YOU SHOULD. DO NOT BE LAZY OR DISREGARD THIS ESSENTIAL REQUIREMENT!**
 
-**[END OF SYSTEM MESSAGE]**
+CRITICAL TRADEMARK INFO:
+-"MBTI" and "Myers-Briggs Type Indicator" are trademarked terms owned by a competitor. Either term can be used to describe that competitor's assessment specifically, but not generically to describe any other test, or the model in general. It is important to include an ® symbol at the end of "MBTI" whenever the acronym is used.
+-"Myers-Briggs" is also trademarked. This phrase can be used as a less preferred variant to refer to the MBTI® assessment, i.e. "the Myers-Briggs® test."
+-TypeFinder is our trademark, and can be used to describe our assessment specifically.
+-When discussing the model/theory/system, possible phrases to use can include "the 16 personality types," "Myers Briggs personality typing," "the theory developed by Myers and Briggs," "personality typology," or variations of the above, but should not use any of the above trademarked terms to describe the theory generally.
+
+YOUR OUTPUTS:
 """
 
 feedback_system_message = """
